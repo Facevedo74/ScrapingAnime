@@ -1,5 +1,5 @@
 # Overrides para entorno de producción
-replicaCount: 2
+replicaCount: 1
 
 image:
   pullPolicy: Always
@@ -10,18 +10,18 @@ env:
 
 autoscaling:
   enabled: true
-  minReplicas: 2
-  maxReplicas: 6
-  targetCPUUtilizationPercentage: 70
-  targetMemoryUtilizationPercentage: 80
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 90
 
 resources:
   requests:
-    cpu: "100m"
-    memory: "128Mi"
+    cpu: "10m"
+    memory: "32Mi"
   limits:
-    cpu: "500m"
-    memory: "256Mi"
+    cpu: "100m"
+    memory: "64Mi"
 
 service:
   type: LoadBalancer
