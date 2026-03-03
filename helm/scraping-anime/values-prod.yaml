@@ -1,0 +1,27 @@
+# Overrides para entorno de producción
+replicaCount: 2
+
+image:
+  pullPolicy: IfNotPresent
+
+env:
+  PORT: "3000"
+  NODE_ENV: "production"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+
+service:
+  type: ClusterIP
