@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scraping-anime
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Facevedo74/ScrapingAnime.git
+    targetRevision: HEAD
+    path: helm/scraping-anime
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-prod.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: scraping-anime
+
+  syncPolicy:
+    automated:
+      prune: true        # elimina recursos que ya no están en Git
+      selfHeal: true     # revierte cambios manuales no declarados en Git
+    syncOptions:
+      - CreateNamespace=true
