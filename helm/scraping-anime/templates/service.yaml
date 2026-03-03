@@ -4,8 +4,11 @@ metadata:
   name: {{ include "scraping-anime.fullname" . }}
   labels:
     {{- include "scraping-anime.labels" . | nindent 4 }}
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: MC_scraping-anime-rg_scraping-anime-aks_centralus
 spec:
   type: {{ .Values.service.type }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
   selector:
     {{- include "scraping-anime.selectorLabels" . | nindent 4 }}
   ports:

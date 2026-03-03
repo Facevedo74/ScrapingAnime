@@ -6,9 +6,10 @@ image:
   pullPolicy: Always
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
   targetPort: 3000
+  loadBalancerIP: "172.202.10.115"
 
 env:
   PORT: "3000"
