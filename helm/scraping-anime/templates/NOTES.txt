@@ -1,0 +1,25 @@
+1. Get the application URL:
+   kubectl port-forward svc/{{ include "scraping-anime.fullname" . }} 3000:{{ .Values.service.port }}
+   Then visit: http://localhost:3000
+
+2. Check pod status:
+   kubectl get pods -l app.kubernetes.io/name={{ include "scraping-anime.name" . }}
+
+3. Check HPA status:
+   kubectl get hpa {{ include "scraping-anime.fullname" . }}
+
+
+# Instalar / desplegar
+helm install scraping-anime ./helm/scraping-anime
+
+# Actualizar sin reinstalar
+helm upgrade scraping-anime ./helm/scraping-anime
+
+# Preview de los manifiestos generados (dry-run)
+helm template scraping-anime ./helm/scraping-anime
+
+# Cambiar valores en caliente (ej: deshabilitar HPA)
+helm upgrade scraping-anime ./helm/scraping-anime --set autoscaling.enabled=false
+
+# Desinstalar
+helm uninstall scraping-anime
