@@ -1,9 +1,9 @@
 replicaCount: 2
 
 image:
-  repository: scraping-anime
-  tag: latest
-  pullPolicy: IfNotPresent
+  repository: facevedo74/scraping-anime
+  tag: "1.0"
+  pullPolicy: Always
 
 service:
   type: ClusterIP
