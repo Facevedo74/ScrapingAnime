@@ -1,6 +1,6 @@
 import { AnimeProvider } from './AnimeProvider';
 import { CheerioAPI } from 'cheerio';
-import { decodeDataPlayer, normalizeMp4upload } from '../../utils/playerUtils';
+import { decodeDataPlayer, normalizeMp4upload } from '../../utils.service';
 
 interface LatanimeInput {
   baseSlug: string;

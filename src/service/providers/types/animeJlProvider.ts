@@ -1,6 +1,6 @@
 import { AnimeProvider } from './AnimeProvider';
 import { CheerioAPI } from 'cheerio';
-import { normalizeMp4upload } from '../../utils/playerUtils';
+import { normalizeMp4upload } from '../../utils.service';
 
 const normalizeAnimeJlBase = (url: string): string => {
   if (!url) return '';

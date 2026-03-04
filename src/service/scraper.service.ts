@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import { buildHeaders } from './utils.service';
 import { getProvider } from './providers/animeProviderFactory';
 
@@ -38,7 +38,7 @@ export class ScraperService {
         headers: buildHeaders(),
       });
       if (status === 404 || status === 403) return null;
-      const $ = cheerio.load(data);
+      const $ = load(data);
       const links = provider.extractLinks($);
       const providers = Object.entries(links)
         .filter(([, link]) => Boolean(link))
@@ -46,10 +46,10 @@ export class ScraperService {
 
       return { chapter, providers, ...links };
     } catch (error: any) {
-      console.error('Error al hacer scraping:', error);
-      if (error.response && error.response.status === 404) {
+      if (error.response && (error.response.status === 404 || error.response.status === 403)) {
         return null;
       }
+      console.error('Error al hacer scraping:', error.message ?? error);
     }
   }
 }
