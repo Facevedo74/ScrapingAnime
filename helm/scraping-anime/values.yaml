@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: facevedo74/scraping-anime
-  tag: "105a2b0a469f0435ffa79133cb36703238a3f0ea"
+  tag: "60628873dc0ac509be6ef72b63787669eddbb643"
   pullPolicy: Always
 
 service:
