@@ -15,5 +15,5 @@ app.get("/", (_req: Request, res: Response) => {
 
 app.listen(PORT, () => {
   console.log(`ScrapingAnime - listening on port ${PORT}`);
-  console.log(`wololo`);
+  console.log(`wololo v2`);
 });
